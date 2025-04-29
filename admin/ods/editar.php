@@ -16,8 +16,8 @@ if (!$id) {
     exit;
 }
 
-$stmt = $conexao->prepare("SELECT * FROM ods WHERE id = ?");
-$stmt->bind_param("i", $id);
+$stmt = $conexao->prepare("SELECT * FROM ods WHERE numero_item = ?");
+$stmt->bind_param("s", $id);
 $stmt->execute();
 $dados = $stmt->get_result()->fetch_assoc();
 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="POST" enctype="multipart/form-data">
         <div class="form-group mb-3">
             <label>Número do Item:</label>
-            <input type="number" name="numero_item" class="form-control" value="<?php echo $dados['numero_item']; ?>" required>
+            <input type="text" name="numero_item" class="form-control" value="<?php echo $dados['numero_item']; ?>" required>
         </div>
         <div class="form-group mb-3">
             <label>Nome da ODS:</label>

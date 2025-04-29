@@ -47,13 +47,13 @@ $ods_lista = $stmt->get_result();
     <?php if ($ods_lista->num_rows > 0): ?>
         <div class="row">
             <?php while ($ods = $ods_lista->fetch_assoc()): ?>
-                <div class="col-md-6 mb-3">
+                <div class="col-md-3 mb-3">
                     <div class="card">
                         <div class="card-header bg-light">
-                            <strong>ODS <?php echo $ods['numero_item']; ?>:</strong> <?php echo $ods['nome_ods']; ?>
+                            <strong>ODS <?php echo $ods['numero_item']; ?>:</strong> <?php echo $ods['fatores']; ?>
                         </div>
                         <div class="card-body">
-                            <p><?php echo $ods['metas_ipea']; ?></p>
+                            
                             <div class="d-flex flex-wrap">
                                 <?php
                                 $tipos = ['A' => 'ameaca', 'V' => 'vulnerabilidade', 'R' => 'resiliencia', 'S' => 'sagrado'];

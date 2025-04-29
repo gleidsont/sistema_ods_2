@@ -11,7 +11,8 @@ $mensagem = '';
 $projetos = $conexao->query("SELECT id, nome_projeto FROM projetos WHERE id_usuario = $id_usuario");
 
 // Carrega todas as ODS
-$ods = $conexao->query("SELECT * FROM ods ORDER BY numero_item ASC");
+$ods = $conexao->query("SELECT * FROM ods ORDER BY CAST(SUBSTRING_INDEX(numero_item, '.', 1) AS UNSIGNED),
+    CAST(SUBSTRING_INDEX(numero_item, '.', -1) AS UNSIGNED) ASC");
 
 // Ao submeter
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -56,11 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label>Marque as ODS que deseja associar:</label>
             <div class="row">
                 <?php while ($item = $ods->fetch_assoc()): ?>
-                    <div class="col-md-4 mb-2">
+                    <div class="col-md-5 mb-2">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="ods_ids[]" value="<?php echo $item['id']; ?>" id="ods_<?php echo $item['id']; ?>">
                             <label class="form-check-label" for="ods_<?php echo $item['id']; ?>">
-                                <?php echo $item['numero_item'] . ' - ' . $item['nome_ods']; ?>
+                                <?php echo $item['numero_item'] . ' - ' . $item['fatores']; ?>
                             </label>
                         </div>
                     </div>
