@@ -1,0 +1,17 @@
+<?php
+// conexao.php - Arquivo para conexão com o banco de dados
+$host = 'localhost';
+$user  = 'root';
+$pass  = '';
+$dbname = 'tech4198_sistema_ods';
+
+try {
+    $conexao = new mysqli($host, $user, $pass, $dbname);
+
+    $pdo = $conexao; //new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    // $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // $conexao = $pdo;
+} catch (PDOException $e) {
+    die("Erro ao conectar: " . $e->getMessage());
+}
+?>
