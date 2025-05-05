@@ -1,5 +1,5 @@
 <?php
-// conexao.php - Arquivo para conexão com o banco de dados
+// conexao.php - Arquivo para conex達o com o banco de dados. No Localhost, a senha fica em branco '' e no hostgator fica assim: m[f?6E^@wD*{'
 $host = 'localhost';
 $user  = 'root';
 $pass  = '';
