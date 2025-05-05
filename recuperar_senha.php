@@ -2,7 +2,12 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'vendor/autoload.php'; // PHPMailer via Composer
+
+require 'autoload.php'; // PHPMailer via Composer
+require 'vendor/PHPMailer/PHPMailer.php';
+require 'vendor/PHPMailer/SMTP.php';
+require 'vendor/PHPMailer/Exception.php';
+
 include 'includes/conexao.php';
 
 $mensagem = '';
@@ -40,17 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $mail->setFrom('SEU_EMAIL@gmail.com', 'Sistema ODS');
             $mail->addAddress($email);
             $mail->isHTML(true);
-            $mail->Subject = 'Recuperação de senha';
-            $link = "http://localhost/sistema_ods_2/redefinir_senha.php?token=$token";
-            $mail->Body = "Clique no link para redefinir sua senha: <a href='$link'>$link</a>";
+            $mail->Subject = 'Recuperacao de senha';
+            $link = "redefinir_senha.php?token=$token";
+            $mail->Body = "Clique no link para redefinir sua senha: <a href='$link'>$link</a>
+            ";
 
             $mail->send();
-            $mensagem = "Enviamos um link de redefinição para seu e-mail.";
+            $mensagem = "Enviamos um link de redefinição para seu e-mail.<br>
+            IMPORTANTE: Verifique sua caixa de SPAM, pois o e-mail pode ter ido para esta pasta no seu e-mail! ";
         } catch (Exception $e) {
             $mensagem = "Erro ao enviar e-mail: {$mail->ErrorInfo}";
         }
     } else {
-        $mensagem = "E-mail não encontrado.";
+        $mensagem = "E-mail não encontrado em nossa base de dados. Faça o cadastro para utilizar a plataforma";
     }
 }
 ?>

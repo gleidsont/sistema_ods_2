@@ -13,15 +13,15 @@ include 'includes/header.php';
     <div class="row justify-content-center mt-4">
         <?php if ($_SESSION['usuario_perfil'] === 'admin'): ?>
             <div class="col-md-4 mb-3">
-                <a href="admin/ods/listar.php" class="btn btn-warning w-100">Gerenciar ODS</a>
+                <a href="admin/ods/listar.php" class="btn btn-primary w-100">Gerenciar Fatores</a>
             </div>
             <div class="col-md-4 mb-3">
-                <a href="admin/usuarios/gerenciar.php" class="btn btn-secondary w-100">Gerenciar Usuários</a>
+                <a href="admin/usuarios/gerenciar.php" class="btn btn-primary w-100">Gerenciar Usuários</a>
             </div>
         <?php endif; ?>
 
         <div class="col-md-4 mb-3">
-            <a href="projetos/criar.php" class="btn btn-success w-100">Criar Novo Projeto</a>
+            <a href="projetos/criar.php" class="btn btn-primary w-100">Criar Novo Projeto</a>
         </div>
 
         <div class="col-md-4 mb-3">
@@ -29,7 +29,7 @@ include 'includes/header.php';
         </div>
 
         <div class="col-md-4 mb-3">
-            <a href="ods/associar.php" class="btn btn-info w-100">Associar ODS a Projetos</a>
+            <a href="ods/associar.php" class="btn btn-primary w-100">Associar Fatores a Projetos</a>
         </div>
 
         <div class="col-md-4 mb-3">
@@ -37,7 +37,7 @@ include 'includes/header.php';
         </div>
 
         <div class="col-md-4 mb-3">
-            <a href="export/zip.php" class="btn btn-outline-dark w-100">Exportar como ZIP</a>
+            <a href="admin/logs/logs.php" class="btn btn-outline-dark w-100">Logs (Auditoria)</a>
         </div>
 
         <div class="col-md-4 mb-3">

@@ -77,6 +77,16 @@
             font-size: 0.9rem;
             margin-right: 10px;
         }
+        .btn-floating {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            border-radius: 50px;
+            padding: 12px 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            font-size: 1.1rem;
+        }
     </style>    
 </head>
 <body>

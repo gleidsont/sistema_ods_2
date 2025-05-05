@@ -69,8 +69,8 @@ function otimizarImagem($caminho_original, $qualidade = 70) {
 ?>
 
 <div class="container mt-4">
-    <h3>Lista de ODS</h3>
-    <a href="cadastrar.php" class="btn btn-success mb-3">+ Cadastrar Nova ODS</a>
+    <h3>Lista de Fatores</h3>
+    <a href="cadastrar.php" class="btn btn-success mb-3">+ Cadastrar Novo Fator</a>
 
 <?php
                 if ($resultado->num_rows > 0) {

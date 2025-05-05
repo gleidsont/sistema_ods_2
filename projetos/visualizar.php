@@ -10,6 +10,34 @@ if (!$id_projeto) {
     exit;
 }
 
+function otimizarImagem($caminho_original, $qualidade = 70) {
+    $base = "../assets/img/";
+    if (!file_exists($base . $caminho_original)) return false;
+    $extensao = strtolower(pathinfo($base . $caminho_original, PATHINFO_EXTENSION));
+    $nome_webp = str_replace(".$extensao", ".webp", $base . $caminho_original);
+    if (file_exists($nome_webp)) {
+        return (filesize($nome_webp) < filesize($base . $caminho_original)) ? $nome_webp : $base . $caminho_original;
+    }
+    $info = getimagesize($base . $caminho_original);
+    $largura_desejada = 300;
+    list($largura_orig, $altura_orig) = $info;
+    $nova_altura = ($altura_orig / $largura_orig) * $largura_desejada;
+
+    if ($extensao == "jpg" || $extensao == "jpeg") {
+        $imagem = imagecreatefromjpeg($base . $caminho_original);
+    } elseif ($extensao == "png") {
+        $imagem = imagecreatefrompng($base . $caminho_original);
+    } else {
+        return false;
+    }
+
+    $imagem_redimensionada = imagescale($imagem, $largura_desejada, $nova_altura);
+    imagewebp($imagem_redimensionada, $nome_webp, $qualidade);
+    imagedestroy($imagem);
+    imagedestroy($imagem_redimensionada);
+    return $nome_webp;
+}
+
 // Valida se o projeto pertence ao usuário (caso não seja admin)
 $is_admin = $_SESSION['usuario_perfil'] === 'admin';
 $id_usuario = $_SESSION['usuario_id'];
@@ -59,7 +87,10 @@ $ods_lista = $stmt->get_result();
                                 $tipos = ['A' => 'ameaca', 'V' => 'vulnerabilidade', 'R' => 'resiliencia', 'S' => 'sagrado'];
                                 foreach ($tipos as $sigla => $coluna) {
                                     if (!empty($ods["imagem_$coluna"])) {
-                                        echo "<img src='../assets/img/{$ods["imagem_$coluna"]}' title='$coluna' width='60' class='me-2 mb-2'>";
+                                        $img_otimizada = otimizarImagem($ods["imagem_$coluna"]);
+                                        if ($img_otimizada) {
+                                            echo "<img src='{$img_otimizada}' title='{$coluna}' width='60' class='me-2 mb-2'>";
+                                        }
                                     }
                                 }
                                 ?>

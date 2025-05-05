@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="/sistema_ods_2/index.php">Sistema ODS</a>
+    <a href="javascript:history.back()" class="btn btn-sm btn-outline-primary me-3">⬅ Voltar Página</a>
+        <a class="navbar-brand" href="/sistema_ods_2/index.php">PGT-ODS</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>

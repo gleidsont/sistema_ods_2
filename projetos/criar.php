@@ -3,6 +3,8 @@ session_start();
 include '../includes/auth_check.php';
 include '../includes/header.php';
 include '../includes/conexao.php';
+include_once '../includes/logs.php';
+
 
 $mensagem = '';
 
@@ -13,12 +15,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $stmt = $conexao->prepare("INSERT INTO projetos (id_usuario, nome_projeto, descricao) VALUES (?, ?, ?)");
     $stmt->bind_param("iss", $usuario_id, $nome, $descricao);
-    if ($stmt->execute()) {
+    if ($stmt->execute()) {       
+        $novo_id = $stmt->insert_id;
+        registrar_log($conexao, $_SESSION['usuario_id'], 'INSERT', 'projetos', $novo_id, "Projeto criado: $nome");
         header("Location: listar.php");
         exit;
     } else {
         $mensagem = "Erro ao salvar o projeto.";
-    }
+    }   
 }
 ?>
 

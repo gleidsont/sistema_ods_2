@@ -5,8 +5,10 @@ include 'includes/header.php';
 
 <div class="container mt-5">
     <div class="text-center mb-4">
-        <h1 class="display-5">Sistema de Gestão de Projetos com ODS</h1>
-        <p class="lead">Crie projetos, associe aos Objetivos de Desenvolvimento Sustentável (ODS) e exporte seus dados com facilidade.</p>
+    <img src="https://pctec.unb.br/images/Logotipos/Empreendimentos/PICAPS.png" alt="Logo do Projeto" class="img-fluid mb-3" style="max-width: 200px;">
+    <img src="assets/img/ods_logo.png" alt="Logo do Projeto" class="img-fluid mb-3" style="max-width: 140px;">
+        <h1 class="display-5">PGT-ODS – Plataforma de Gestão Territorial dos ODS</h1>
+        <p class="lead">Crie projetos, associe aos Fatores dos Objetivos de Desenvolvimento Sustentável (ODS) e exporte seus dados com facilidade para Excel e .ZIP</p>
     </div>
 
     <?php if (isset($_SESSION['usuario_id'])): ?>

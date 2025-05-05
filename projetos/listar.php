@@ -35,7 +35,10 @@ $resultado = $conexao->query($sql);
                     <td><?php echo $row['descricao']; ?></td>
                     <?php if ($is_admin): ?><td><?php echo $row['criador']; ?></td><?php endif; ?>
                     <td>
-                        <a href="visualizar.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Ver</a>
+                        <a href="../ods/associar.php?projeto_id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Associar Fatores</a>
+                        <a href="visualizar.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Visualizar Fatores</a>
+                        <a href="../export/exportar_projeto.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-success">Exportar para Excel</a>
+                        <a href="../export/exportar_projeto_zip.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-secondary">📦 Baixar imagens ZIP</a>
 
                         <?php if ($is_admin): ?>
                             <a href="editar.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">Editar</a>

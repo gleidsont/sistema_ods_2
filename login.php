@@ -1,8 +1,11 @@
 <?php
 session_start();
 include 'includes/conexao.php';
-
+$logout_msg = "";
 $erro = '';
+if (isset($_GET['logout'])) {
+    $logout_msg = "Você saiu com sucesso.";
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
@@ -35,6 +38,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php include 'includes/header.php'; ?>
 <div class="container mt-5" style="max-width: 500px;">
     <h3 class="text-center">Login</h3>
+    <?php 
+    
+    if ($logout_msg): ?>
+    <div class="alert alert-success"><?php echo $logout_msg; ?></div>
+    <?php endif; ?>
     <?php if ($erro): ?>
         <div class="alert alert-danger"><?php echo $erro; ?></div>
     <?php endif; ?>
