@@ -1,5 +1,6 @@
 <?php
 // conexao.php - Arquivo para conex達o com o banco de dados. No Localhost, a senha fica em branco '' e no hostgator fica assim: m[f?6E^@wD*{'
+//No localhost, é user="root" e senha=""; No hostgator, $user  = 'tech4198_gleidson'; e senha $pass  = 'm[f?6E^@wD*{';
 $host = 'localhost';
 $user  = 'root';
 $pass  = '';
