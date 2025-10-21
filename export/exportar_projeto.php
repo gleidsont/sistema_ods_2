@@ -46,29 +46,29 @@ $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
 $sheet->setCellValue('A1', 'Projeto');
-$sheet->setCellValue('B1', 'Descrição');
-$sheet->setCellValue('C1', 'Fatores');
+//$sheet->setCellValue('B1', 'Descrição');
+$sheet->setCellValue('B1', 'Fator');
 if ($is_admin) {
-    $sheet->setCellValue('D1', 'Criador');
+    $sheet->setCellValue('C1', 'Criador');
 }
 
 $row = 2;
 if ($ods_result->num_rows > 0) {
     while ($ods = $ods_result->fetch_assoc()) {
         $sheet->setCellValue("A$row", $projeto['nome_projeto']);
-        $sheet->setCellValue("B$row", $projeto['descricao']);
-        $sheet->setCellValue("C$row", "ODS " . $ods['numero_item'] . " - " . $ods['fatores']);
+        //$sheet->setCellValue("B$row", $projeto['descricao']);
+        $sheet->setCellValue("B$row", "ODS " . $ods['numero_item'] . " - " . $ods['fatores']);
         if ($is_admin) {
-            $sheet->setCellValue("D$row", $projeto['criador']);
+            $sheet->setCellValue("C$row", $projeto['criador']);
         }
         $row++;
     }
 } else {
     $sheet->setCellValue("A$row", $projeto['nome_projeto']);
-    $sheet->setCellValue("B$row", $projeto['descricao']);
-    $sheet->setCellValue("C$row", "Nenhuma ODS associada");
+    //$sheet->setCellValue("B$row", $projeto['descricao']);
+    $sheet->setCellValue("B$row", "Nenhuma ODS associada");
     if ($is_admin) {
-        $sheet->setCellValue("D$row", $projeto['criador']);
+        $sheet->setCellValue("C$row", $projeto['criador']);
     }
 }
 

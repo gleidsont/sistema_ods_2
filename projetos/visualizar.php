@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/auth_check.php';
-include '../includes/header.php';
+
 include '../includes/conexao.php';
 
 $id_projeto = $_GET['id'] ?? null;
@@ -9,6 +9,7 @@ if (!$id_projeto) {
     header("Location: listar.php");
     exit;
 }
+include '../includes/header.php';
 
 function otimizarImagem($caminho_original, $qualidade = 70) {
     $base = "../assets/img/";

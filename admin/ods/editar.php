@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../../includes/auth_check.php';
-include '../../includes/header.php';
+
 
 if ($_SESSION['usuario_perfil'] !== 'admin') {
     header('Location: ../../index.php');
@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: listar.php");
     exit;
 }
+include '../../includes/header.php';
 ?>
 
 <div class="container mt-4">

@@ -1,14 +1,14 @@
 <?php
 session_start();
 include '../../includes/auth_check.php';
-include '../../includes/header.php';
+include '../../includes/conexao.php';
 
 if ($_SESSION['usuario_perfil'] !== 'admin') {
     header('Location: ../../index.php');
     exit;
 }
+include '../../includes/header.php';
 
-include '../../includes/conexao.php';
 
 $sql = "SELECT distinct `imagem`, `numero_ods`, `nome_ods` FROM ods ORDER BY `numero_ods` ASC";
 $resultado = $conexao->query($sql);

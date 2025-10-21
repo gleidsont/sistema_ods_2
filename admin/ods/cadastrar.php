@@ -1,14 +1,14 @@
 <?php
 session_start();
 include '../../includes/auth_check.php';
-include '../../includes/header.php';
+include '../../includes/conexao.php';
 
 if ($_SESSION['usuario_perfil'] !== 'admin') {
     header('Location: ../../index.php');
     exit;
 }
+include '../../includes/header.php';
 
-include '../../includes/conexao.php';
 
 $mensagem = '';
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <div class="container mt-4">
-    <h3>Cadastrar Nova ODS</h3>
+    <h3>Cadastrar Novo Fator de ODS</h3>
     <?php if ($mensagem): ?>
         <div class="alert alert-success"><?php echo $mensagem; ?></div>
     <?php endif; ?>
@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="number" name="numero_item" class="form-control" required>
         </div>
         <div class="form-group mb-3">
-            <label>Nome da ODS:</label>
+            <label>Nome do Fator ODS:</label>
             <input type="text" name="nome_ods" class="form-control" required>
         </div>
         <div class="form-group mb-3">
@@ -68,6 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         <?php endforeach; ?>
         <button type="submit" class="btn btn-success">Cadastrar</button>
+        <button type="reset" class="btn btn-warning">Apagar dados</button>
+        <a href="/sistema_ods_2/admin/ods/listar.php" class="btn btn-danger">Cancelar</a>
     </form>
 </div>
 

@@ -1,13 +1,10 @@
 <?php
 session_start();
 include '../includes/auth_check.php';
-include '../includes/header.php';
 include '../includes/conexao.php';
 include_once '../includes/logs.php';
 
-
 $mensagem = '';
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome_projeto'];
     $descricao = $_POST['descricao'];
@@ -24,6 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $mensagem = "Erro ao salvar o projeto.";
     }   
 }
+include '../includes/header.php';
 ?>
 
 <div class="container mt-4">

@@ -1,13 +1,13 @@
 <?php
 session_start();
 include '../../includes/auth_check.php';
-include '../../includes/header.php';
+
 
 if ($_SESSION['usuario_perfil'] !== 'admin') {
     header('Location: ../../index.php');
     exit;
 }
-
+include '../../includes/header.php';
 include '../../includes/conexao.php';
 
 $usuarios = $conexao->query("SELECT id, nome, email, perfil, ativo, criado_em FROM usuarios ORDER BY criado_em DESC");

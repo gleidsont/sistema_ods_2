@@ -14,9 +14,9 @@ $spreadsheet = new Spreadsheet();
 $sheet = $spreadsheet->getActiveSheet();
 
 $sheet->setCellValue('A1', 'Projeto');
-$sheet->setCellValue('B1', 'Descrição');
-$sheet->setCellValue('C1', 'Fatores');
-$sheet->setCellValue('D1', 'Criado por');
+//$sheet->setCellValue('B1', 'Descrição');
+$sheet->setCellValue('B1', 'Fatores');
+$sheet->setCellValue('C1', 'Criado por');
 
 $row = 2;
 
@@ -43,19 +43,19 @@ while ($projeto = $projetos->fetch_assoc()) {
     // Se não houver ODS associadas, ainda exporta o projeto
     if ($ods_result->num_rows === 0) {
         $sheet->setCellValue("A$row", $projeto['nome_projeto']);
-        $sheet->setCellValue("B$row", $projeto['descricao']);
-        $sheet->setCellValue("C$row", "Nenhuma ODS vinculada");
+        //$sheet->setCellValue("B$row", $projeto['descricao']);
+        $sheet->setCellValue("B$row", "Nenhuma ODS vinculada");
         if ($is_admin) {
-            $sheet->setCellValue("D$row", $projeto['criador']);
+            $sheet->setCellValue("C$row", $projeto['criador']);
         }
         $row++;
     } else {
         while ($ods = $ods_result->fetch_assoc()) {
             $sheet->setCellValue("A$row", $projeto['nome_projeto']);
-            $sheet->setCellValue("B$row", $projeto['descricao']);
-            $sheet->setCellValue("C$row", "ODS " . $ods['numero_item'] . " - " . $ods['fatores']);
+            //$sheet->setCellValue("B$row", $projeto['descricao']);
+            $sheet->setCellValue("B$row", "ODS " . $ods['numero_item'] . " - " . $ods['fatores']);
             if ($is_admin) {
-                $sheet->setCellValue("D$row", $projeto['criador']);
+                $sheet->setCellValue("C$row", $projeto['criador']);
             }
             $row++;
         }
