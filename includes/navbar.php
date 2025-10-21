@@ -50,6 +50,15 @@
             <li><a class="dropdown-item" href="/sistema_ods_2/admin/logs/logs.php">Logs (Auditoria)</a></li>
           </ul>
         </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            ODK
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/sistema_ods_2/ODK/codigo_export_odk.php">Código Export ODK</a></li>
+          </ul>
+        </li>
         
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/sistema_ods_2/logout.php">Sair</a>
