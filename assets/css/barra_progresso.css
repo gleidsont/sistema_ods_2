@@ -1,0 +1,89 @@
+.progress-container {  
+    width: 100%;  
+    max-width: 800px;  
+    margin: 50px auto;  
+    padding: 20px;  
+}  
+  
+.progress-steps {  
+    display: flex;  
+    justify-content: space-between;  
+    position: relative;  
+    margin-bottom: 20px;  
+}  
+  
+.step {  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    flex: 1;  
+    position: relative;  
+    z-index: 2;  
+}  
+  
+.step-circle {  
+    width: 50px;  
+    height: 50px;  
+    border-radius: 50%;  
+    background-color: #e0e0e0;  
+    border: 3px solid #e0e0e0;  
+    display: flex;  
+    align-items: center;  
+    justify-content: center;  
+    font-weight: bold;  
+    color: #999;  
+    transition: all 0.3s ease;  
+}  
+  
+.step.active .step-circle {  
+    background-color: #4CAF50;  
+    border-color: #4CAF50;  
+    color: white;  
+}  
+  
+.step.completed .step-circle {  
+    background-color: #2196F3;  
+    border-color: #2196F3;  
+    color: white;  
+}  
+  
+.step-label {  
+    margin-top: 10px;  
+    font-size: 14px;  
+    color: #666;  
+    text-align: center;  
+}  
+  
+.step.active .step-label {  
+    color: #333;  
+    font-weight: bold;  
+}  
+  
+.progress-bar {  
+    width: 100%;  
+    height: 8px;  
+    background-color: #e0e0e0;  
+    border-radius: 10px;  
+    overflow: hidden;  
+}  
+  
+.progress-fill {  
+    height: 100%;  
+    background: linear-gradient(90deg, #2196F3, #4CAF50);  
+    border-radius: 10px;  
+    transition: width 0.5s ease;  
+    width: 0%;  
+}  
+  
+/* Responsivo */  
+@media (max-width: 600px) {  
+    .step-label {  
+        font-size: 12px;  
+    }  
+      
+    .step-circle {  
+        width: 40px;  
+        height: 40px;  
+        font-size: 14px;  
+    }  
+}
