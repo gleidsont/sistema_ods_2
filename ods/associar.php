@@ -9,7 +9,7 @@ $id_usuario = $_SESSION['usuario_id'];
 $mensagem = '';
 
 // Carrega os projetos do usuário
-$projetos = $conexao->query("SELECT id, nome_projeto FROM projetos WHERE id_usuario = $id_usuario");
+$projetos = $conexao->query("SELECT id, nome_projeto FROM projetos");
 
 // Se foi submetido
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ods_ids'])) {
