@@ -1,0 +1,20 @@
+[09-Nov-2025 00:28:19 America/Fortaleza] PHP Fatal error:  Uncaught Error: Class "PhpOffice\PhpSpreadsheet\Reader\BaseReader" not found in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php:15
+Stack trace:
+#0 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php on line 15
+[09-Nov-2025 09:03:14 America/Fortaleza] PHP Fatal error:  Uncaught Error: Class "PhpOffice\PhpSpreadsheet\Reader\BaseReader" not found in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php:15
+Stack trace:
+#0 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php on line 15
+[09-Nov-2025 16:43:50 America/Fortaleza] PHP Fatal error:  Uncaught Error: Class "PhpOffice\PhpSpreadsheet\Reader\BaseReader" not found in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php:15
+Stack trace:
+#0 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php on line 15
+[09-Nov-2025 22:42:55 America/Fortaleza] PHP Fatal error:  Uncaught Error: Class "PhpOffice\PhpSpreadsheet\Reader\BaseReader" not found in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php:15
+Stack trace:
+#0 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php on line 15
+[10-Nov-2025 04:31:47 America/Fortaleza] PHP Fatal error:  Uncaught Error: Class "PhpOffice\PhpSpreadsheet\Reader\BaseReader" not found in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php:15
+Stack trace:
+#0 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/PhpSpreadsheet/src/PhpSpreadsheet/Reader/Csv.php on line 15

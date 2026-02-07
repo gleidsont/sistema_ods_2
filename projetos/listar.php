@@ -58,6 +58,16 @@ function renderProgressBar($estagioAtual, $projetoId) {
 $resultado = $conexao->query($sql);
 ?>
 <link rel="stylesheet" href="../assets/css/barra_progresso.css">
+<style>
+        .acoes {
+        display: flex; /* Habilita o Flexbox */
+        flex-direction: column; /* Alinha os itens em coluna */
+        }
+
+        .conteudo {
+        flex-grow: 1; /* Faz o conteúdo ocupar todo o espaço restante */
+        }
+</style>
 <div class="container mt-4">
     <h3>Projetos</h3>
 
@@ -66,7 +76,8 @@ $resultado = $conexao->query($sql);
             <tr>
                 <th>Nome</th>
                 <th>Ações</th>
-                <th>Progresso</th>
+                <th>Localização</th>
+                <!-- <th>Progresso</th> -->
             </tr>
         </thead>
         <tbody>
@@ -78,21 +89,24 @@ $resultado = $conexao->query($sql);
                         Local:  <br>
                         Criado por: <?php echo $row['criador']; ?> 
                     </td>
-                    <td>
-                        <a href="../ods/associar.php?projeto_id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Associar Fatores</a> <br>
-                        <a href="visualizar.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Visualizar Fatores</a> <br>
-                        <a href="../export/exportar_projeto.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-success">Exportar Excel</a> <br>
-                        <a href="../export/exportar_projeto_zip.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-secondary">Baixar imagens</a> <br>
+                    <td class = acoes>
+                        <a href="../ods/associar.php?projeto_id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary"><img src="../assets/img/associar.png"> Associar Fatores</a> <br>
+                        <a href="visualizar.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary"><img src="../assets/img/visualizar.png">  Visualizar Fatores</a> <br>
+                        <!-- <a href="../export/exportar_projeto.php?id=<?//= $row['id']; ?>" class="btn btn-sm btn-success">Exportar Excel</a> <br> -->
+                        <a href="../export/exportar_projeto_excel_odk.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-success"><img src="../assets/img/excel.png">  Exportar Excel</a> <br>
+                        <a href="../export/exportar_projeto_zip.php?id=<?= $row['id']; ?>" class="btn btn-sm btn-secondary"><img src="../assets/img/download.png">  Baixar imagens</a> <br>
+                        <a href="../paineis/cartografia.html?id=<?= $row['id']; ?>" class="btn btn-sm"><img src="../assets/img/localizacoes.png"> Mapa Territorial</a> <br>
 
                         <?php if ($is_admin): ?>
-                            <a href="editar.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning">Editar</a> <br>
-                            <a href="excluir.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')">Excluir</a>
+                            <a href="editar.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-warning"><img src="../assets/img/edit.png">  Editar</a> <br>
+                            <a href="excluir.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Tem certeza?')"><img src="../assets/img/delete.png"> Excluir</a>
                         <?php endif; ?>
                     </td>
-                    <td><?php  
-                        $estagioAtual = 3;
+                    <td><img src="../assets/img/localizacao/pinhao.jpg" style="width: 50%; height: 50%; object-fit: contain;">
+                    <?php  
+                        //$estagioAtual = 3;
                         // Renderiza a barra  
-                        renderProgressBar($estagioAtual, $row['id']); 
+                        //renderProgressBar($estagioAtual, $row['id']); 
                         ?></td>
                 </tr>
             <?php endwhile; ?>

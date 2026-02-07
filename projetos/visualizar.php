@@ -59,7 +59,7 @@ if (!$projeto) {
 }
 
 // Pega as ODS associadas
-$stmt = $conexao->prepare("SELECT o.* FROM projetos_ods po JOIN ods o ON po.id_ods = o.id WHERE po.id_projeto = ?");
+$stmt = $conexao->prepare("SELECT o.* FROM projetos_ods po JOIN ods o ON po.id_ods = o.id WHERE po.id_projeto = ? ORDER BY numero_ods");
 $stmt->bind_param("i", $id_projeto);
 $stmt->execute();
 $ods_lista = $stmt->get_result();

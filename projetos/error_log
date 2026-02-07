@@ -1,0 +1,8 @@
+[29-Oct-2025 10:20:32 America/Fortaleza] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php:10
+Stack trace:
+#0 /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php(10): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'tech4198_sistem...')
+#1 /home4/tech4198/public_html/sistema_ods_2/projetos/listar.php(5): include('/home4/tech4198...')
+#2 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php on line 10
+[17-Nov-2025 10:55:46 America/Fortaleza] PHP Warning:  Undefined array key "criador" in /home4/tech4198/public_html/sistema_ods_2/projetos/listar.php on line 79
+[17-Nov-2025 10:58:43 America/Fortaleza] PHP Warning:  Undefined array key "criador" in /home4/tech4198/public_html/sistema_ods_2/projetos/listar.php on line 79

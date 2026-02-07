@@ -1,0 +1,24 @@
+[29-Oct-2025 10:20:06 America/Fortaleza] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php:10
+Stack trace:
+#0 /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php(10): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'tech4198_sistem...')
+#1 /home4/tech4198/public_html/sistema_ods_2/ods/associar.php(5): include('/home4/tech4198...')
+#2 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php on line 10
+[29-Oct-2025 10:20:20 America/Fortaleza] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php:10
+Stack trace:
+#0 /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php(10): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'tech4198_sistem...')
+#1 /home4/tech4198/public_html/sistema_ods_2/ods/associar.php(5): include('/home4/tech4198...')
+#2 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php on line 10
+[29-Oct-2025 10:20:27 America/Fortaleza] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php:10
+Stack trace:
+#0 /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php(10): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'tech4198_sistem...')
+#1 /home4/tech4198/public_html/sistema_ods_2/ods/associar.php(5): include('/home4/tech4198...')
+#2 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php on line 10
+[29-Oct-2025 10:20:29 America/Fortaleza] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php:10
+Stack trace:
+#0 /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php(10): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'tech4198_sistem...')
+#1 /home4/tech4198/public_html/sistema_ods_2/ods/associar.php(5): include('/home4/tech4198...')
+#2 {main}
+  thrown in /home4/tech4198/public_html/sistema_ods_2/includes/conexao.php on line 10
