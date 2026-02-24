@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 06/02/2026 às 22:07
+-- Tempo de geração: 24/02/2026 às 18:47
 -- Versão do servidor: 5.7.23-23
 -- Versão do PHP: 8.1.34
 
@@ -911,7 +911,8 @@ INSERT INTO `logs_auditoria` (`id`, `id_usuario`, `acao`, `tabela_afetada`, `id_
 (866, 10, 'INSERT', 'projetos_ods', 22, 'Associou ODS ID 15', '2026-01-28 12:11:46'),
 (867, 10, 'INSERT', 'projetos_ods', 22, 'Associou ODS ID 111', '2026-01-28 12:11:46'),
 (868, 10, 'INSERT', 'projetos_ods', 22, 'Associou ODS ID 189', '2026-01-28 12:11:46'),
-(869, 10, 'INSERT', 'projetos_ods', 22, 'Associou ODS ID 190', '2026-01-28 12:11:46');
+(869, 10, 'INSERT', 'projetos_ods', 22, 'Associou ODS ID 190', '2026-01-28 12:11:46'),
+(870, 4, 'INSERT', 'projetos', 23, 'Projeto criado: Colaboratório Palmas - TO', '2026-02-12 17:38:06');
 
 -- --------------------------------------------------------
 
@@ -1099,7 +1100,8 @@ INSERT INTO `projetos` (`id`, `id_usuario`, `nome_projeto`, `descricao`, `criado
 (18, 4, 'Diálogos Prospectivos Territorial - Pinhão - Paraná', 'Oficina de prospectiva territorial com cooperativas, associações, universidade e governo de Pinhão no Paraná.', '2025-11-03 10:20:50'),
 (19, 18, 'Rascunho - exportar ícones', '', '2025-11-17 10:55:45'),
 (21, 10, 'Oficina Teste', 'Teste', '2026-01-22 14:36:44'),
-(22, 10, 'teste mosaico', '', '2026-01-28 09:10:51');
+(22, 10, 'teste mosaico', '', '2026-01-28 09:10:51'),
+(23, 4, 'Colaboratório Palmas - TO', 'Implantação da Plataforma de Inteligência Cooperativa para a Atenção Primária à Saúde (Picaps) no Tocantins, mobilizando a academia, o governo estadual e municipal. A Oficina de Diálogos Prospectivos Territoriais contará com a participação da Fiocruz Brasília, a UFT, a SES-TO e a SMS-Palmas, avaliando oportunidades e integração interinstitucional', '2026-02-12 14:38:06');
 
 -- --------------------------------------------------------
 
@@ -1771,7 +1773,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `logs_auditoria`
 --
 ALTER TABLE `logs_auditoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=870;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=871;
 
 --
 -- AUTO_INCREMENT de tabela `ods`
@@ -1783,7 +1785,7 @@ ALTER TABLE `ods`
 -- AUTO_INCREMENT de tabela `projetos`
 --
 ALTER TABLE `projetos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de tabela `projetos_ods`
