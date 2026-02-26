@@ -5,13 +5,13 @@ include '../includes/auth_check.php';
 include '../includes/conexao.php';
 include '../includes/header.php';
 
-if (isset($_SESSION['msg_sucesso'])) {  
-    echo '<div class="alert alert-success alert-dismissible fade show">' . $_SESSION['msg_sucesso'] . '</div>';  
-    unset($_SESSION['msg_sucesso']);  
-}  
-if (isset($_SESSION['msg_erro'])) {  
-    echo '<div class="alert alert-danger alert-dismissible fade show">' . $_SESSION['msg_erro'] . '</div>';  
-    unset($_SESSION['msg_erro']);  
+if (isset($_SESSION['msg_sucesso'])) {
+    echo '<div class="alert alert-success alert-dismissible fade show">' . $_SESSION['msg_sucesso'] . '</div>';
+    unset($_SESSION['msg_sucesso']);
+}
+if (isset($_SESSION['msg_erro'])) {
+    echo '<div class="alert alert-danger alert-dismissible fade show">' . $_SESSION['msg_erro'] . '</div>';
+    unset($_SESSION['msg_erro']);
 }
 
 $erro = '';
@@ -67,57 +67,55 @@ function pareceCsvODK($tmpPath) {
 }
 
 // UPLOAD do CSV (bruto ODK)
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'upload_csv') {
-    $idProjeto = intval($_POST['id_projeto'] ?? 0);
-
-    if ($idProjeto <= 0) {
-        $erro = 'Projeto inválido.';
-    } elseif (!isset($_FILES['arquivo_csv']) || $_FILES['arquivo_csv']['error'] !== UPLOAD_ERR_OK) {
-        $erro = 'Falha no upload. Tente novamente.';
-    } else {
-        // Confirma se o projeto é do usuário logado (segurança)
-        $stmt = $conexao->prepare("SELECT id_projeto, nome_projeto FROM projetos WHERE id_projeto = ?");
-        $stmt->bind_param("i", $idProjeto);
-        $stmt->execute();
-        $res = $stmt->get_result();
-        $proj = $res->fetch_assoc();
-        $stmt->close();
-
-        if (!$proj) {
-            $erro = 'Você não tem permissão para enviar arquivo para este projeto.';
-        } else {
-            $arquivo = $_FILES['arquivo_csv'];
-            $ext = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));
-
-            if ($ext !== 'csv') {
-                $erro = 'Envie apenas arquivo .csv';
-            } else {
-                // (Opcional) validar formato ODK
-                // Se quiser bloquear de verdade, troque para: if (!pareceCsvODK(...)) { $erro=...; }
-                $okODK = pareceCsvODK($arquivo['tmp_name']);
-
-                $pastaProjeto = pastaProjetoPorId($idProjeto);
-                $dirDestino = $pastaBase . $pastaProjeto . '/';
-                if (!is_dir($dirDestino)) {
-                    @mkdir($dirDestino, 0775, true);
-                }
-
-                $nomeFinal = 'odk_raw_' . date('YmdHis') . '.csv';
-                $caminhoFinal = $dirDestino . $nomeFinal;
-
-                if (move_uploaded_file($arquivo['tmp_name'], $caminhoFinal)) {
-                    $sucesso = "CSV enviado com sucesso para o projeto: " . htmlspecialchars($proj['nome_projeto'])
-                             . " (arquivo: " . htmlspecialchars($nomeFinal) . ")";
-
-                    if (!$okODK) {
-                        $sucesso .= "<br><small style='color:#8a6d3b;'>Aviso: o cabeçalho não parece conter colunas FATOR_. Verifique se exportou com as opções corretas do ODK.</small>";
-                    }
-                } else {
-                    $erro = 'Não foi possível salvar o arquivo no servidor.';
-                }
-            }
-        }
-    }
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'upload_csv') {  
+    $idProjeto = intval($_POST['id_projeto'] ?? 0);  
+  
+    if ($idProjeto <= 0) {  
+        $erro = 'Projeto inválido.';  
+    } elseif (!isset($_FILES['arquivo_csv']) || $_FILES['arquivo_csv']['error'] !== UPLOAD_ERR_OK) {  
+        $erro = 'Falha no upload. Tente novamente.';  
+    } else {  
+        // ✅ Corrigido: campo id (não id_projeto)  
+        $stmt = $conexao->prepare("SELECT id, nome_projeto FROM projetos WHERE id = ?");  
+        $stmt->bind_param("i", $idProjeto);  
+        $stmt->execute();  
+        $res = $stmt->get_result();  
+        $proj = $res->fetch_assoc();  
+        $stmt->close();  
+  
+        if (!$proj) {  
+            $erro = 'Projeto não encontrado.';  
+        } else {  
+            $arquivo = $_FILES['arquivo_csv'];  
+            $ext = strtolower(pathinfo($arquivo['name'], PATHINFO_EXTENSION));  
+  
+            if ($ext !== 'csv') {  
+                $erro = 'Envie apenas arquivo .csv';  
+            } else {  
+                $okODK = pareceCsvODK($arquivo['tmp_name']);  
+  
+                $pastaProjeto = pastaProjetoPorId($idProjeto);  
+                $dirDestino = $pastaBase . $pastaProjeto . '/';  
+                if (!is_dir($dirDestino)) {  
+                    @mkdir($dirDestino, 0775, true);  
+                }  
+  
+                $nomeFinal = 'odk_raw_' . date('YmdHis') . '.csv';  
+                $caminhoFinal = $dirDestino . $nomeFinal;  
+  
+                if (move_uploaded_file($arquivo['tmp_name'], $caminhoFinal)) {  
+                    $sucesso = "CSV enviado com sucesso para o projeto: " . htmlspecialchars($proj['nome_projeto'])  
+                             . " (arquivo: " . htmlspecialchars($nomeFinal) . ")";  
+  
+                    if (!$okODK) {  
+                        $sucesso .= "<br><small style='color:#8a6d3b;'>Aviso: o cabeçalho não parece conter colunas FATOR_. Verifique as opções de exportação do ODK.</small>";  
+                    }  
+                } else {  
+                    $erro = 'Não foi possível salvar o arquivo no servidor. Verifique as permissões da pasta.';  
+                }  
+            }  
+        }  
+    }  
 }
 
 // Buscar projetos do banco (do usuário)
