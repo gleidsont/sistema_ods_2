@@ -58,7 +58,8 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href= "/ODK/codigo_export_odk.php">Código Export ODK</a></li>
-          </ul>
+            <li><a class="dropdown-item" href= "/ODK/tabulacao.php">Tabulação</a></li>
+          </ul>            
         </li>
         
         <li class="nav-item">
