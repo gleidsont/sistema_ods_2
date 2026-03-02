@@ -5,6 +5,58 @@ include '../includes/header.php';
 include '../includes/conexao.php';
 include_once '../includes/logs.php';
 
+require '../autoload.php';  
+use PhpOffice\PhpSpreadsheet\Spreadsheet;  
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+// 1. Buscar dados atualizados para o Excel  
+$stmt_ods = $conexao->prepare("  
+    SELECT ods.numero_ods AS ODS,   
+           CAST(SUBSTRING(ods.numero_item, LOCATE('.', ods.numero_item) + 1) AS UNSIGNED) AS N_FATOR,   
+           CONCAT('ODS ', LPAD(ods.numero_ods, 2, '0'), ' – ', ods.nome_ods) AS ODS_CONDICIONAL,  
+           ods.fatores AS FATOR_A,  
+           ods.metas_ipea AS FATOR_B  
+    FROM projetos_ods  
+    INNER JOIN ods ON projetos_ods.id_ods = ods.id  
+    WHERE projetos_ods.id_projeto = ?  
+    ORDER BY ODS, N_FATOR");  
+$stmt_ods->bind_param("i", $projeto_id);  
+$stmt_ods->execute();  
+$ods_result = $stmt_ods->get_result();  
+  
+// 2. Gerar a Planilha  
+$spreadsheet = new Spreadsheet();  
+$sheet = $spreadsheet->getActiveSheet();  
+$sheet->setCellValue('A1', 'ods')->setCellValue('B1', 'n_fator')->setCellValue('C1', 'ods_condicional')->setCellValue('D1', 'fator_a')->setCellValue('E1', 'fator_b');  
+  
+$row_idx = 2;  
+while ($ods_data = $ods_result->fetch_assoc()) {  
+    $sheet->setCellValue('A' . $row_idx, $ods_data['ODS']);  
+    $sheet->setCellValue('B' . $row_idx, $ods_data['N_FATOR']);  
+    $sheet->setCellValue('C' . $row_idx, $ods_data['ODS_CONDICIONAL']);  
+    $sheet->setCellValue('D' . $row_idx, $ods_data['FATOR_A']);  
+    $sheet->setCellValue('E' . $row_idx, $ods_data['FATOR_B']);  
+    $row_idx++;  
+}  
+  
+// 3. Salvar no Servidor  
+$diretorio = "../export/planilhas/projeto_" . $projeto_id . "/";  
+if (!is_dir($diretorio)) mkdir($diretorio, 0755, true);  
+  
+$filename = "planilha_base_odk.xlsx";  
+$caminhoCompleto = $diretorio . $filename;  
+$writer = new Xlsx($spreadsheet);  
+$writer->save($caminhoCompleto);  
+  
+// 4. Atualizar o caminho no banco de dados  
+$stmt_path = $conexao->prepare("UPDATE projetos SET caminho_excel = ? WHERE id = ?");  
+$stmt_path->bind_param("si", $caminhoCompleto, $projeto_id);  
+$stmt_path->execute();  
+  
+$mensagem = "Associações atualizadas e Excel ODK gerado com sucesso!";
+
+
+
 $id_usuario = $_SESSION['usuario_id'];
 $mensagem = '';
 

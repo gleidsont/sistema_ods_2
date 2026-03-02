@@ -151,7 +151,7 @@ $resultado = $conexao->query($sql);
                                     </div>
                                     <div class="modal-body p-0"> <!-- p-0 remove as bordas brancas -->
                                         <div class="ratio ratio-16x9"> <!-- Mantém a proporção do Power BI -->
-                                            <iframe src="<​?php echo $row['painel_pbi']; ?>" frameborder="0" allowFullScreen="true"> </iframe>
+                                            <iframe src=" <?php echo $row['painel_pbi']; ?> " frameborder="0" allowFullScreen="true"> </iframe>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
