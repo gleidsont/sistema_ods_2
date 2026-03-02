@@ -49,4 +49,3 @@ registrar_log($conexao, $_SESSION['usuario_id'], 'DELETE', 'projetos', $id_proje
 header("Location: listar.php");
 exit;
 include '../includes/header.php';
-?>

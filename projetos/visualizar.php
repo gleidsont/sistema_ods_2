@@ -11,7 +11,8 @@ if (!$id_projeto) {
 }
 include '../includes/header.php';
 
-function otimizarImagem($caminho_original, $qualidade = 70) {
+function otimizarImagem($caminho_original, $qualidade = 70)
+{
     $base = "../assets/img/";
     if (!file_exists($base . $caminho_original)) return false;
     $extensao = strtolower(pathinfo($base . $caminho_original, PATHINFO_EXTENSION));
@@ -82,7 +83,7 @@ $ods_lista = $stmt->get_result();
                             <strong>ODS <?php echo $ods['numero_item']; ?>:</strong> <?php echo $ods['fatores']; ?>
                         </div>
                         <div class="card-body">
-                            
+
                             <div class="d-flex flex-wrap">
                                 <?php
                                 $tipos = ['A' => 'ameaca', 'V' => 'vulnerabilidade', 'R' => 'resiliencia', 'S' => 'sagrado'];
